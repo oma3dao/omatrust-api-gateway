@@ -1,0 +1,27 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/v1/controller-witness",
+      "destination": "https://registry.omatrust.org/api/controller-witness"
+    },
+    {
+      "source": "/v1/verify-and-attest",
+      "destination": "https://registry.omatrust.org/api/verify-and-attest"
+    },
+    {
+      "source": "/v1/delegated-attest",
+      "destination": "https://reputation.omatrust.org/api/eas/delegated-attest"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/v1/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET, POST, OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type" }
+      ]
+    }
+  ]
+}

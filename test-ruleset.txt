@@ -1,1 +1,0 @@
-This file tests that direct pushes to main are blocked.

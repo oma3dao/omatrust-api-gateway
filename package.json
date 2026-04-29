@@ -1,0 +1,12 @@
+{
+  "name": "omatrust-api-gateway",
+  "version": "0.1.0",
+  "private": true,
+  "description": "API gateway for OMATrust services (Vercel serverless functions)",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}

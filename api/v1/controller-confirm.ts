@@ -4,13 +4,7 @@ import { BACKEND_ORIGIN } from '../_shared/upstreams';
 
 export const config = { runtime: 'edge' };
 
-/**
- * Deprecated — redirects to /v1/trust-anchors.
- * Kept for backward compatibility with SDK versions <= alpha.9.
- * Remove once all consumers are on alpha.11+.
- */
-
-const UPSTREAM = `${BACKEND_ORIGIN}/api/public/trust-anchors`;
+const UPSTREAM = `${BACKEND_ORIGIN}/api/public/controller-confirm`;
 
 export default async function handler(req: Request) {
   if (req.method === 'OPTIONS') return optionsResponse();

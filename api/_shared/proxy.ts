@@ -43,11 +43,17 @@ export async function proxyPost(upstream: string, body: string): Promise<Respons
   return jsonResponse({ error: `Upstream returned ${status}`, detail: text.slice(0, 200) }, status || 502);
 }
 
+function withSearch(upstream: string, search: string): string {
+  if (!search) return upstream;
+  const separator = upstream.includes('?') ? '&' : '?';
+  return `${upstream}${separator}${search}`;
+}
+
 /**
  * Proxy a GET request to an upstream URL, forwarding query parameters.
  */
 export async function proxyGet(upstream: string, search: string): Promise<Response> {
-  const url = search ? `${upstream}?${search}` : upstream;
+  const url = withSearch(upstream, search);
   let res: Response | undefined;
   let target = url;
 

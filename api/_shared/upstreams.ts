@@ -15,7 +15,7 @@ declare const process: { env: Record<string, string | undefined> };
 
 const CHAIN_PREFIX_MAP: Record<string, string> = {
   "omachain-mainnet": "",
-  "omachain-testnet": "preview.",
+  "omachain-testnet": "test.",
   "omachain-devnet": "dev.",
 };
 

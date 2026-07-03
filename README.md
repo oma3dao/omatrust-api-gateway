@@ -90,6 +90,8 @@ POST routes should return upstream validation errors (JSON with error messages),
 
 ## Deployment
 
+> **Vercel environment configuration and domain setup** are documented in the [Deployment Guide](https://github.com/oma3dao/omatrust-docs/blob/main/operations/deployment-rep-attestation.md) (Section 8).
+
 Push to `main`. Vercel deploys automatically. Ensure `api.omatrust.org` is configured as a custom domain on the Vercel project.
 
 ## License and Participation

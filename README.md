@@ -22,6 +22,16 @@ Product subdomains (`registry.omatrust.org`, `reputation.omatrust.org`) are huma
 | `/v1/verify-and-attest`   | `registry.omatrust.org/api/verify-and-attest`     | POST   |
 | `/v1/delegated-attest`    | `reputation.omatrust.org/api/eas/delegated-attest`| POST   |
 | `/v1/nonce`               | `reputation.omatrust.org/api/eas/nonce`           | GET    |
+| `/v1/trust-anchors`       | `preview.backend.omatrust.org/api/public/trust-anchors` | GET |
+| `/v1/controller-endpoint-confirm` | `preview.backend.omatrust.org/api/public/controller-endpoint-confirm` | GET |
+| `/v1/controller-confirm`  | `preview.backend.omatrust.org/api/public/controller-confirm` | GET |
+| `/v1/identity-resolve`    | `preview.backend.omatrust.org/api/public/identity-resolve` | POST |
+
+Compatibility aliases:
+
+| Alias | Canonical route |
+|-------|-----------------|
+| `/v1/trust-policy` | `/v1/trust-anchors` |
 
 All routes also handle OPTIONS preflight with 204 + CORS headers.
 
@@ -79,6 +89,8 @@ curl "http://localhost:3001/v1/nonce?attester=0x00000000000000000000000000000000
 POST routes should return upstream validation errors (JSON with error messages), not 302 redirects or HTML. That confirms the proxy is preserving the HTTP method.
 
 ## Deployment
+
+> **Vercel environment configuration and domain setup** are documented in the [Deployment Guide](https://github.com/oma3dao/omatrust-docs/blob/main/operations/deployment-rep-attestation.md) (Section 8).
 
 Push to `main`. Vercel deploys automatically. Ensure `api.omatrust.org` is configured as a custom domain on the Vercel project.
 

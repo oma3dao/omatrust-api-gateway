@@ -1,13 +1,14 @@
-import { optionsResponse } from '../_shared/cors';
+import { jsonResponse, optionsResponse } from '../_shared/cors';
 import { proxyPost } from '../_shared/proxy';
-import { REGISTRY_ORIGIN } from '../_shared/upstreams';
+import { BACKEND_ORIGIN } from '../_shared/upstreams';
 
 export const config = { runtime: 'edge' };
 
-const UPSTREAM = `${REGISTRY_ORIGIN}/api/verify-and-attest`;
+const UPSTREAM = `${BACKEND_ORIGIN}/api/public/identity-resolve`;
 
 export default async function handler(req: Request) {
   if (req.method === 'OPTIONS') return optionsResponse();
+  if (req.method !== 'POST') return jsonResponse({ error: 'Method not allowed' }, 405);
   const body = await req.text();
   return proxyPost(UPSTREAM, body);
 }

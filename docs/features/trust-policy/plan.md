@@ -1,4 +1,4 @@
-# Trust Policy — Plan
+# Trust Anchors — Plan
 
 Status: Implemented
 
@@ -8,4 +8,4 @@ This feature is part of the OMATrust Review Widget system. The full build plan l
 
 ## Scope
 
-Serve the OMA3 trust policy at `/v1/trust-policy`. The SDK fetches this on signing bridge creation to validate contracts, schemas, and origins.
+Serve OMA3 trust anchors at `/v1/trust-anchors`. The SDK fetches this on signing bridge creation to validate contracts, schemas, and origins. `/v1/trust-policy` remains as a compatibility alias.

@@ -23,6 +23,7 @@ Product subdomains (`registry.omatrust.org`, `reputation.omatrust.org`) are huma
 | `/v1/delegated-attest`    | `reputation.omatrust.org/api/eas/delegated-attest`| POST   |
 | `/v1/nonce`               | `reputation.omatrust.org/api/eas/nonce`           | GET    |
 | `/v1/trust-anchors`       | `preview.backend.omatrust.org/api/public/trust-anchors` | GET |
+| `/v1/artifact-trust`      | `preview.backend.omatrust.org/api/public/artifact-trust` | GET |
 | `/v1/controller-endpoint-confirm` | `preview.backend.omatrust.org/api/public/controller-endpoint-confirm` | GET |
 | `/v1/controller-confirm`  | `preview.backend.omatrust.org/api/public/controller-confirm` | GET |
 | `/v1/identity-resolve`    | `preview.backend.omatrust.org/api/public/identity-resolve` | POST |
@@ -82,8 +83,10 @@ curl -X POST http://localhost:3001/v1/delegated-attest \
   -H "Content-Type: application/json" \
   -d '{"test":true}'
 
-# GET route — expect JSON with nonce value
+# GET routes — expect JSON from upstream
 curl "http://localhost:3001/v1/nonce?attester=0x0000000000000000000000000000000000000000"
+curl --get "http://localhost:3001/v1/artifact-trust" \
+  --data-urlencode "artifactDid=did:artifact:bafk..."
 ```
 
 POST routes should return upstream validation errors (JSON with error messages), not 302 redirects or HTML. That confirms the proxy is preserving the HTTP method.
